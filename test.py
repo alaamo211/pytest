@@ -1,5 +1,15 @@
 # -*- coding: utf-8 -*-
 
-d = {'Michael': 95, 'Bob': 75, 'Tracy': 85}
+#coding = utf-8
+from selenium import webdriver
+from selenium.webdriver.common import keys
+ 
+driver = webdriver.Chrome()
+driver.get('https://www.python.org')
+assert 'python' in driver.title
+elem = driver.find_element_by_name('q')
+elem.send_keys('pycon')
+elem.send_keys(keys.RETURN)
+assert 'No results found.' not in driver.page_source
+driver.close()
 
-print (d['Michael'])
